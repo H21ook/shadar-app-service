@@ -1,0 +1,27 @@
+stages:
+  - deploy-server
+
+variables:
+  ITC_SERVICE_ID: 'shadar-app-service'
+
+cache:
+  paths:
+    - node_modules
+
+deploy-production:
+  stage: deploy-server
+  variables:
+    DOCKER_HOST: '10.2.106.23:2375'
+    DOCKER_DNS: '8.8.8.8'
+    DOCKER_DNS: '8.8.4.4'
+    DOCKER_REPLICAS: 1
+  script:
+    - npm install
+    - cp -R ./* /home/file/system/service/shadar-app/
+    - cp -r ./.env* /home/file/system/service/shadar-app/
+    - docker -H ${DOCKER_HOST} service scale ${ITC_SERVICE_ID}=0
+    - docker -H ${DOCKER_HOST} service scale ${ITC_SERVICE_ID}=${DOCKER_REPLICAS}
+  tags:
+    - shadar-app-production
+  only:
+    - tags

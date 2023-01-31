@@ -1,0 +1,20 @@
+POST https://shadar-said.tugscom.mn/api/auth/register
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYzYxZWNhOTAwMmExNDk3M2NkMGQ0NiIsImlhdCI6MTYyMzU5OTUwMywiZXhwIjoxNjIzNjAzMTAzfQ.237dMuKgwEAoJcz3zLbs0CJV_5uZnJarZ20xeNHluUw
+
+{
+    "username": "sample",
+    "email": "khishigbayar.u@gmail.com",
+    "password": "1234",
+    "phoneNumber": "99646141"
+}
+
+###
+
+POST https://shadar-said.tugscom.mn/api/auth/login
+Content-type: application/json
+
+{
+    "username": "sample",
+    "password": "1234"
+}
